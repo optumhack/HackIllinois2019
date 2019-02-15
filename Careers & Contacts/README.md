@@ -8,6 +8,8 @@ For all other contacts, please visit us on social media:
 
 ![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/facebook.png "UHG Facebook")[facebook.com/uhgcareers](https://facebook.com/uhgcareers)
 
+<a href="https://facebook.com/uhgcareers" rel="Facebook">![UHG Facebok](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/facebook.png)</a>
+
 ![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/instagram.png "UHG Instagram")[Instagram.com/uhgcareers](https://Instagram.com/uhgcareers)
 
 ![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/linkedin.png "UHG LinkedIn")[uhg.hr/UHGLICompany](https://uhg.hr/UHGLICompany)
