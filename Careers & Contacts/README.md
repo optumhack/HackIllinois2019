@@ -6,9 +6,13 @@ For other career opportunities, explore at: <https://workatoptum.com>
 
 For all other contacts, please visit us on social media:
 
-![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/facebook.png "UHG Facebook")[facebook.com/uhgcareers](https://facebook.com/uhgcareers)
-
 <a href="https://facebook.com/uhgcareers" rel="Facebook">![UHG Facebok](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/facebook.png)</a>
+<a href="https://Instagram.com/uhgcareers" rel="Instagram">![UHG Facebok](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/instagram.png)</a>
+<a href="https://uhg.hr/UHGLICompany" rel="LinkedIn">![UHG Facebok](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/linkedin.png)</a>
+<a href="https://twitter.com/UHGCareers" rel="Twitter">![UHG Facebok](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/twitter.png)</a>
+<a href="https://youtube.com/user/uhgcareers" rel="Youtube">![UHG Facebok](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/youtube.png)</a>
+
+![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/facebook.png "UHG Facebook")[facebook.com/uhgcareers](https://facebook.com/uhgcareers)
 
 ![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/instagram.png "UHG Instagram")[Instagram.com/uhgcareers](https://Instagram.com/uhgcareers)
 
