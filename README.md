@@ -42,5 +42,6 @@ _To learn more about Optum, visit us at <https://www.optum.com/>_
 
 ### Hackathon Logistics
 
-Room:
-Workshop location & time:
+Optum Room Location:
+
+Workshop Location & Time:
