@@ -42,6 +42,6 @@ _To learn more about Optum, visit us at <https://www.optum.com/>_
 
 ### Hackathon Logistics
 
-Optum Room Location:
+Optum Room Location: Siebel 1214
 
-Workshop Location & Time:
+Workshop Location & Time: Siebel 2405, Saturday 9pm
