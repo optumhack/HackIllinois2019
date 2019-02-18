@@ -25,10 +25,12 @@ _To learn more about Optum, visit us at <https://www.optum.com/>_
 ### Documents & Folders
 
 - [Careers & Contacts](https://github.com/optumhack/HackIllinois2019/tree/master/Careers%20%26%20Contacts)
-  _ Contains information about early career opportunities and internships
-  _ Contains contact information on Optum's mentors
-- [Data Files](https://github.com/optumhack/HackIllinois2019/tree/master/Data%20Files) \* Contains sample data for use in project
-- [Optum HackIllinois Informational](https://github.com/optumhack/HackIllinois2019/blob/master/Optum%20HackIllinois%20Informational.pdf) \* Contains an overview and description of Optum's Hack Illinois 2019 project
+  - Contains information about early career opportunities and internships
+  - Contains contact information on Optum's mentors
+- [Data Files](https://github.com/optumhack/HackIllinois2019/tree/master/Data%20Files) \*
+  - Contains sample data for use in project
+- [Optum HackIllinois Informational](https://github.com/optumhack/HackIllinois2019/blob/master/Optum%20HackIllinois%20Informational.pdf) \*
+  - Contains an overview and description of Optum's Hack Illinois 2019 project
 
 ---
 
