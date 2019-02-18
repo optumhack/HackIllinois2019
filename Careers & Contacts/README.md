@@ -1,4 +1,4 @@
-# Optum Internship & Early Career Opprtunity
+# Optum Early Career Opportunities & Internships
 
 See our Optum Technology Development Program roles here: <https://uhg.hr/CollegeTDPRoles>
 
@@ -12,14 +12,36 @@ For all other information regarding careers at UHG, please visit us on social me
 <a href="https://twitter.com/UHGCareers" rel="Twitter">![UHG Facebok](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/twitter.png)</a>
 <a href="https://youtube.com/user/uhgcareers" rel="Youtube">![UHG Facebok](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/youtube.png)</a>
 
-<!-- ![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/facebook.png "UHG Facebook")[facebook.com/uhgcareers](https://facebook.com/uhgcareers)
+# Optum Mentors
 
-![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/instagram.png "UHG Instagram")[Instagram.com/uhgcareers](https://Instagram.com/uhgcareers)
+### Andre Yonadam - Sofware Engineer
 
-![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/linkedin.png "UHG LinkedIn")[uhg.hr/UHGLICompany](https://uhg.hr/UHGLICompany)
+<a href="https://www.linkedin.com/in/aloysius-paredes/" rel="Facebook">![Andre Yonadam](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/ay.jpeg)</a>
 
-![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/twitter.png "UHG Twitter")[twitter.com/uhgcareers](https://twitter.com/UHGCareers)
+### Andrew Lundholm - Sofware Engineer
 
-![alt text](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/youtube.png "UHG Youtube")[youtube.com/users/uhgcareers](https://youtube.com/user/uhgcareers) -->
+<a href="https://www.linkedin.com/in/andrew-lundholm-9546b5b7/" rel="Facebook">![Andrew Lundholm](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/al.jpg)</a>
+
+### Aloysius Paredes - Sofware Engineer
+
+<a href="https://www.linkedin.com/in/aloysius-paredes/" rel="Facebook">![Aloysius Paredes](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/ap.jpeg)</a>
+
+### Delaney McGuire - Innovation Program Coordinator
+
+<a href="https://www.linkedin.com/in/delaney-mcguire/" rel="Facebook">![Delaney McGuire](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/dm.jpeg)</a>
+
+### Andrew McConnell - Sofware Engineer
+
+<a href="https://www.linkedin.com/in/andrew-mcconnell-15b95468/" rel="Facebook">![Andrew McConnell](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/am.jpeg)</a>
+
+### Matthew Krumwiede - Sofware Engineer
+
+<a href="https://www.linkedin.com/in/matthew-krumwiede/" rel="Facebook">![Matthew Krumwiede](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/mk.jpeg)</a>
+
+### Zyaad Khader - Sofware Engineer
+
+<a href="https://www.linkedin.com/in/zyaad-khader-40b621129/" rel="Facebook">![Zyaad Khader](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/zk.jpeg)</a>
+
+---
 
 <div>Social Media icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
