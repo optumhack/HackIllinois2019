@@ -37,3 +37,10 @@ _To learn more about Optum, visit us at <https://www.optum.com/>_
 ### Optum Trivia
 
 <https://optumhack.github.io/optum-trivia>
+
+---
+
+### Hackathon Logistics
+
+Room:
+Workshop location & time:
