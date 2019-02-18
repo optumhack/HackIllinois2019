@@ -14,15 +14,15 @@ For all other information regarding careers at UHG, please visit us on social me
 
 # Optum Mentors
 
-### Andre Yonadam - Sofware Engineer
+### Andre Yonadam - Software Engineer
 
 <a href="https://www.linkedin.com/in/andreyonadam/" rel="Facebook">![Andre Yonadam](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/ay.jpeg)</a>
 
-### Andrew Lundholm - Sofware Engineer
+### Andrew Lundholm - Software Engineer
 
 <a href="https://www.linkedin.com/in/andrew-lundholm-9546b5b7/" rel="Facebook">![Andrew Lundholm](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/al.jpg)</a>
 
-### Aloysius Paredes - Sofware Engineer
+### Aloysius Paredes - Software Engineer
 
 <a href="https://www.linkedin.com/in/aloysius-paredes/" rel="Facebook">![Aloysius Paredes](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/ap.jpeg)</a>
 
@@ -30,15 +30,15 @@ For all other information regarding careers at UHG, please visit us on social me
 
 <a href="https://www.linkedin.com/in/delaney-mcguire/" rel="Facebook">![Delaney McGuire](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/dm.jpeg)</a>
 
-### Andrew McConnell - Sofware Engineer
+### Andrew McConnell - Software Engineer
 
 <a href="https://www.linkedin.com/in/andrew-mcconnell-15b95468/" rel="Facebook">![Andrew McConnell](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/am.jpeg)</a>
 
-### Matthew Krumwiede - Sofware Engineer
+### Matthew Krumwiede - Software Engineer
 
 <a href="https://www.linkedin.com/in/matthew-krumwiede/" rel="Facebook">![Matthew Krumwiede](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/mk.jpeg)</a>
 
-### Zyaad Khader - Sofware Engineer
+### Zyaad Khader - Software Engineer
 
 <a href="https://www.linkedin.com/in/zyaad-khader-40b621129/" rel="Facebook">![Zyaad Khader](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/zk.jpeg)</a>
 
