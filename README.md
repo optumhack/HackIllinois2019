@@ -8,15 +8,15 @@ To help people live healthier lives and to help make the health system work bett
 
 ### Our Values
 
-**Integrity** - Honor commitments. Never compromise ethics.
+- **Integrity** - Honor commitments. Never compromise ethics.
 
-**Compassion** - Walk in the shoes of people we serve and those with whom we work.
+- **Compassion** - Walk in the shoes of people we serve and those with whom we work.
 
-**Relationships** - Build trust through collaboration.
+- **Relationships** - Build trust through collaboration.
 
-**Innovation** - Invent the future, learn from the past.
+- **Innovation** - Invent the future, learn from the past.
 
-**Performance** - Demonstrate excellence in everything we do.
+- **Performance** - Demonstrate excellence in everything we do.
 
 _To learn more about Optum, visit us at <https://www.optum.com/>_
 
