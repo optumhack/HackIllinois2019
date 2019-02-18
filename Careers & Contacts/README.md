@@ -16,7 +16,7 @@ For all other information regarding careers at UHG, please visit us on social me
 
 ### Andre Yonadam - Sofware Engineer
 
-<a href="https://www.linkedin.com/in/aloysius-paredes/" rel="Facebook">![Andre Yonadam](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/ay.jpeg)</a>
+<a href="https://www.linkedin.com/in/andreyonadam/" rel="Facebook">![Andre Yonadam](https://github.com/optumhack/HackIllinois2019/blob/master/Assets/ay.jpeg)</a>
 
 ### Andrew Lundholm - Sofware Engineer
 
