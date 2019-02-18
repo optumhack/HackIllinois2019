@@ -44,4 +44,4 @@ _To learn more about Optum, visit us at <https://www.optum.com/>_
 
 Optum Room Location: Siebel 1214
 
-Workshop Location & Time: Siebel 2405, Saturday 9pm
+Workshop Location & Time: Siebel 1304, Saturday 9pm
