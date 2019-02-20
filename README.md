@@ -40,7 +40,9 @@ _To learn more about Optum, visit us at <https://www.optum.com/>_
 
 ---
 
-### Hackathon Logistics
+### Hackathon Logistics - <https://www.hackillinois.org/>
+
+Hack Illinois 2019 Schedule: <https://www.hackillinois.org/dayof/schedule>
 
 Optum Room Location: Siebel 1214
 
