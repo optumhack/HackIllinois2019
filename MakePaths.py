@@ -10,6 +10,9 @@ import json
 
 
 #Run and parse API
+f = open('examplejson.txt','r')
+data_string = f.read()
+print(data_string)
 
 
 #Process data
