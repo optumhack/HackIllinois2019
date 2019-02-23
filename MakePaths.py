@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.linalg as la
 import json
-from mat import mat
+from mat import mat as table
 def largest_eigenvector(probability_matrix):
     #Start with random vector and get largest eigenvector out of probability
     vec = np.array([1,1,1,1,1])
@@ -19,7 +19,7 @@ def largest_eigenvector(probability_matrix):
 f = open('Data Files/CSV/TASK_DATA.csv','r')
 lines = f.read().split('\n')
 f.close()
-task_matrix = [line.split(',') for line in lines]
+task_table = table([line.split(',') for line in lines])
 
 
 #Run and parse API
@@ -57,5 +57,3 @@ for connection in connections:
 for i in range(n):
     adjacency_matrix[i][i] = 9999999
 
-print(adjacency_matrix)
-print(probability_matrix)
