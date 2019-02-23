@@ -31,3 +31,13 @@ Task Data:
 | Ex   |   21    | Task Type 3 |     9      |     23      | 3/13/18  | High           |
 
 The employee_id designates a field nurse to a given task. If you are creating a routing algorithm you can ignore this column.
+
+Task Type Duration:
+
+|      | task_type | task_type_duration |
+| ---- | :-----: | -------------- |
+| Type |   string   |  int         |
+| Ex   |   Task Type 3    | 3 |
+
+
+The table above represents how long, in hours, each task type takes.
