@@ -10,16 +10,28 @@ def largest_eigenvector(probability_matrix):
         vec = vec/(la.norm(vec))
     return vec
 #Put employee information into usable Dictionary or object
-
+f = open('Data Files/CSV/EMPLOYEE_DATA.csv','r')
+lines = f.read().split('\n')
+f.close()
+employee_table = table([line.split(',') for line in lines])
 
 #Put patient information into usable Dictionary or object
-
+f = open('Data Files/CSV/PATIENT_DATA.csv','r')
+lines = f.read().split('\n')
+f.close()
+patient_table = table([line.split(',') for line in lines])
 
 #Put task information into usable Dictionary or object
 f = open('Data Files/CSV/TASK_DATA.csv','r')
 lines = f.read().split('\n')
 f.close()
 task_table = table([line.split(',') for line in lines])
+
+#Put task type information into usable table object
+f = open('Data Files/CSV/TASK_TYPE_DURATION.csv','r')
+lines = f.read().split('\n')
+f.close()
+task_type = table([line.split(',') for line in lines])
 
 
 #Run and parse API
@@ -57,3 +69,6 @@ for connection in connections:
 for i in range(n):
     adjacency_matrix[i][i] = 9999999
 
+print(probability_matrix)
+print(adjacency_matrix)
+print(task_table['task_type'])
