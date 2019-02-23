@@ -94,9 +94,17 @@ for i in range(100):
     origins.append((base_area[0] + np.random.randn()/5, base_area[1] + np.random.randn()/5))
 origins = origins[:-1]
 
+
+"""
+Here's some data for a set of non random samples:
 origins = '45.5347,-122.6231;47.4747,-122.2057;47.6044,-122.3345;47.6731,-122.1185;47.6149,-122.1936'
+"""
 
-
+#Here's using acutal randomly generated data:
+origins = origins[0:5]
+origins = ';'.join(map(str, origins)) 
+origins = origins.translate(str.maketrans('','','() '))
+# print(origins)
 
 (adjacency, probability) = get_matrices(origins)
 
