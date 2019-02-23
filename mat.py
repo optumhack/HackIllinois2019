@@ -18,7 +18,7 @@ class mat:
                 break
         if found == False:
             raise KeyError('Key not found')
-        return np.array([row[index] for row in self.data[1:]])
+        return np.array([row[index] for row in self.data])
     
     def get_raw(self):
         return self.data
