@@ -29,3 +29,5 @@ Task Data:
 | ---- | :-----: | :---------: | :--------: | :---------: | :------: | -------------- |
 | Type |   int   |   string    |    int     |     int     |  string  | string         |
 | Ex   |   21    | Task Type 3 |     9      |     23      | 3/13/18  | High           |
+
+The employee_id designates a field nurse to a given task. If you are creating a routing algorithm you can ignore this column.
