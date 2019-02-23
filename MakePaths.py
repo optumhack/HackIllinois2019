@@ -28,5 +28,7 @@ for connection in connections:
     origin = connection['originIndex']
     adjacency_matrix[dest][origin] = connection['travelDuration']
     adjacency_matrix[origin][dest] = connection['travelDuration']
+for i in range(n):
+    adjacency_matrix[i][i] = 9999999
 
 print(adjacency_matrix)
