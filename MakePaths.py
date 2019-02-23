@@ -15,6 +15,11 @@ def largest_eigenvector(probability_matrix):
 
 
 #Put task information into usable Dictionary or object
+f = open('Data Files/CSV/TASK_DATA.csv','r')
+lines = f.read().split('\n')
+f.close()
+task_matrix = [line.split(',') for line in lines]
+
 
 #Run and parse API
 key = 'Aoo6MSOdOhu7_gENweR-26VzV-fP83hR3kCT3EouCWeQdF_uyhsT2kx5ZWqyffI2'
@@ -24,6 +29,7 @@ API_url = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='+
 
 f = open('examplejson.txt','r')
 data_string = f.read()
+f.close()
 parsed_json = json.loads(data_string)
 #Process data
 
