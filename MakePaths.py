@@ -18,7 +18,9 @@ API_url = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='+
 f = open('examplejson.txt','r')
 data_string = f.read()
 parsed_json = json.loads(data_string)
-print(parsed_json)
 #Process data
 
-
+n = 3
+#n = len(addresses)
+parsed_json['resourceSets'][0]['resources'][0]['results']
+adjacency_matrix = np.empty((n,n))
