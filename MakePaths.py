@@ -1,6 +1,13 @@
 import numpy as np
 import scipy.linalg as la
 import json
+def largest_eigenvector(probability_matrix):
+    #Start with random vector and get largest eigenvector out of probability
+    vec = np.array([1,1,1,1,1])
+    for i in range(10):
+        vec = probability_matrix@vec
+        vec = vec/(la.norm(vec))
+    return vec
 #Put employee information into usable Dictionary or object
 
 
