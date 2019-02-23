@@ -1,6 +1,7 @@
 import numpy as np
 import scipy.linalg as la
 import json
+from mat import mat
 def largest_eigenvector(probability_matrix):
     #Start with random vector and get largest eigenvector out of probability
     vec = np.array([1,1,1,1,1])
@@ -55,12 +56,6 @@ for connection in connections:
 #Put large numbers over diagonal to make it useless to stay in the same place
 for i in range(n):
     adjacency_matrix[i][i] = 9999999
-#Start with random vector and get largest eigenvector out of probability
-vec = np.array([1,1,1,1,1])
-for i in range(10):
-    vec = probability_matrix@vec
-    vec = vec/(la.norm(vec))
-print(vec)
-print(np.argsort(vec))
+
 print(adjacency_matrix)
 print(probability_matrix)
