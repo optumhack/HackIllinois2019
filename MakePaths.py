@@ -1,4 +1,5 @@
 import numpy as np
+import scipy.linalg as la
 import json
 #Put employee information into usable Dictionary or object
 
@@ -22,13 +23,31 @@ parsed_json = json.loads(data_string)
 n = 5
 #n = len(addresses)
 connections = parsed_json['resourceSets'][0]['resources'][0]['results']
+
+#Adjacency matrix with weights proportional to time
 adjacency_matrix = np.zeros((n,n))
+#Probability matrix with weights linking probability to less time
+probability_matrix = np.zeros((n,n))
+#Add weights as the travel duration symmetrically
 for connection in connections:
     dest = connection['destinationIndex']
     origin = connection['originIndex']
-    adjacency_matrix[dest][origin] = connection['travelDuration']
-    adjacency_matrix[origin][dest] = connection['travelDuration']
+    dur = connection['travelDuration']
+    adjacency_matrix[dest][origin] = dur
+    adjacency_matrix[origin][dest] = dur
+    if np.isclose(0,dur):
+        continue
+    probability_matrix[origin][dest] = 1./dur
+    probability_matrix[dest][origin] = 1./dur
+#Put large numbers over diagonal to make it useless to stay in the same place
 for i in range(n):
     adjacency_matrix[i][i] = 9999999
-
+#Start with random vector and get largest eigenvector out of probability
+vec = np.array([1,1,1,1,1])
+for i in range(10):
+    vec = probability_matrix@vec
+    vec = vec/(la.norm(vec))
+print(vec)
+print(np.argsort(vec))
 print(adjacency_matrix)
+print(probability_matrix)
