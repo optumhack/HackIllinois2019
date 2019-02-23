@@ -20,6 +20,6 @@ class mat:
             raise KeyError('Key not found')
         return np.array([row[index] for row in self.data[1:]])
     
-    def get_raw():
+    def get_raw(self):
         return self.data
 
