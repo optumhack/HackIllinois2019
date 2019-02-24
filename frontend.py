@@ -1,6 +1,5 @@
 import tkinter
 from tkinter import *
-from tkinter import messagebox
 
 class Manager:
 
@@ -23,9 +22,9 @@ class Manager:
         self.idEntry = Entry(master, validate="key", validatecommand=(vcmdId, '%P'))
 
         #nurse hours
-        #self.nurseLabel = Label(master, text='How Many Hours')
-        #vcmdHours = master.register(self.validateHours)  # we have to wrap the command
-        #self.nurseEntry = Entry(master, validate="key", validatecommand=(vcmdHours, '%P'))
+        self.nurseLabel = Label(master, text='How Many Hours')
+        vcmdHours = master.register(self.validateHours)  # we have to wrap the command
+        self.nurseEntry = Entry(master, validate="key", validatecommand=(vcmdHours, '%P'))
 
         #exit button
         self.exitButton = Button(master, text="Exit", command=master.quit)
@@ -36,15 +35,13 @@ class Manager:
         #generate button
         self.generateButton = Button(master, text="Generate", command=lambda: self.generate())
 
-        #back button 
-        self.backButton = Button(master, text="Back", command=lambda: self.back())
-
         #layout
         self.idLabel.grid(row=0, column=0)
         self.idEntry.grid(row=0, column=1)
+        self.nurseLabel.grid(row=1, column=0)
+        self.nurseEntry.grid(row=1, column=1)
         self.exitButton.grid(row=2, column=0)
-        self.enterButton.grid(row=2, column=2)
-        self.backButton.grid(row=2, column=1)
+        self.enterButton.grid(row=2, column=1)
 
     def validateId(self, new_text):
         if not new_text:
@@ -70,29 +67,36 @@ class Manager:
 
     def enter(self):
         #adds id/hours to nursehourlist
-        i = {id}
+        i = {id, hours}
         self.nurseHourList.append(i)
         tkinter.Label(self.master, text="Hello World").grid(row=3)
-
-    def back(self):
-        #creates warning messagebox
-        tkinter.messagebox.showwarning("Warning", "Are You Sure You Want To Go Back?")
 
 class History:
     def __init__(self, master):
         self.master = master
         master.title = "Past"
 
+        count = 0
+
+        for i in len(Manager.nurseHourList):
+            text = Manager.nurseHourList(i)
+            count++
+        
+        #back button button
+        self.exitButton = Button(master, text="Back", command=lambda: self.show_frame(History))
+
+        def show_frame(self, cont):
+            frame = self.frames[cont]
+            frame.tkraise()
+
+
+
 class Nurse:
     def __init__(self, master):
         self.master = master
         master.title = "Nurse"
-    #nurse hours
-    #self.nurseLabel = Label(master, text='How Many Hours')
-    #vcmdHours = master.register(self.validateHours)  # we have to wrap the command
-    #self.nurseEntry = Entry(master, validate="key", validatecommand=(vcmdHours, '%P'))
 
-t = tkinter.Tk()
+t = Tk()
 # runs it
 run_frontend = Manager(t)
 t.mainloop()
