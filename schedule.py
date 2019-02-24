@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import *
+from tkinter import messagebox
 
 LARGE_FONT = ("Verdana", 12)
 
@@ -33,8 +34,8 @@ class Schedule(tk.Tk):
 
 class Manager(tk.Frame):
 
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+    def __init__(self, master, controller):
+        tk.Frame.__init__(self, master)
         label = tk.Label(self, text="Start Page", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
 
@@ -49,8 +50,8 @@ class Manager(tk.Frame):
 
 class History(tk.Frame):
 
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+    def __init__(self, master, controller):
+        tk.Frame.__init__(self, master)
         label = tk.Label(self, text="History", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
 
@@ -63,8 +64,8 @@ class History(tk.Frame):
 
 class Nurse(tk.Frame):
 
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+    def __init__(self, master, controller):
+        tk.Frame.__init__(self, master)
         label = tk.Label(self, text="For the Nurse", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
         self.master = master
@@ -80,7 +81,7 @@ class Nurse(tk.Frame):
 
         #layout
         # button1.pack()
-        goBack = tkinter.messagebox.showwarning("Warning", "Are You Sure you Want to go back?", icon="warning")
+        goBack = tk.messagebox.showwarning("Warning", "Are You Sure you Want to go back?", icon="warning")
         if goBack == "ok":
             print("hi")
             frame = self.frame(Manager)
