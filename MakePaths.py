@@ -5,6 +5,8 @@ import urllib.request as ur
 from mat import mat as table
 from queue2 import queue
 from multiprocessing import Process,Pipe
+from tkinter import *
+from tkinter import messagebox
 
 API_INTERFACE = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='
 KEY = 'Aoo6MSOdOhu7_gENweR-26VzV-fP83hR3kCT3EouCWeQdF_uyhsT2kx5ZWqyffI2'
@@ -197,10 +199,75 @@ def assign(nurse):
 
 def run(child_conn, nurse):
     child_conn.send(assign(nurse))
-    #child_conn.close()
+    child_conn.close()
+
+"""
+TKINTER GUI
+"""
+global user_entries
+user_entries = []
+def fetch(entries):
+   for entry in entries:
+      field = entry[0]
+      text  = entry[1].get()
+      user_entries.append((field, text))
+
+#Helper to make dialog
+def makeform(root, fields):
+   entries = []
+   for field in fields:
+      row = Frame(root)
+      lab = Label(row, width=15, text=field, anchor='w')
+      ent = Entry(row)
+      row.pack(side=TOP, fill=X, padx=5, pady=5)
+      lab.pack(side=LEFT)
+      ent.pack(side=RIGHT, expand=YES, fill=X)
+      entries.append((field, ent))
+   return entries
+   
 
 if __name__ == "__main__":
+
+    while True:
+        root = Tk()
+        ents = makeform(root, ['Number of nurses'])
+        root.bind('<Return>', (lambda event, e=ents: {fetch(e),root.quit()}))   
+        b1 = Button(root, text='Done',
+            command=(lambda e=ents: {fetch(e),root.quit()}),)
+        b1.pack(side=LEFT, padx=5, pady=5)
+        root.mainloop()
+        root.destroy()
+        try:
+            num = int(user_entries[-1][1])
+            break
+        except:
+            pass
+    user_entries = []
+    fields = num*['Nurse_ID','Hours working']
+    root = Tk()
+    ents = makeform(root, fields)
+    root.bind('<Return>', (lambda event, e=ents: {fetch(e),root.quit()}))   
+    b1 = Button(root, text='Done',
+        command=(lambda e=ents: {fetch(e),root.quit()}),)
+    b1.pack(side=LEFT, padx=5, pady=5)
+    root.mainloop()
+    root.destroy()
+    nurses = []
+    for i in range(0, len(user_entries),2):
+        nurses.append(Nurse(user_entries[i][1],user_entries[i+1][1]))
+    for nurse in nurses:
+        assign(nurse)
+    nurse_data = []
+    for nurse in nurses:
+        print(nurse)
+        nurse_data.append(str(nurse))
+    f = open('Nurse Assignments.txt', 'w+')
+    f.write('NURSE: [TASK] TASK_IDs\n')
+    f.write('\n'.join(nurse_data))
+    f.close()
+    """
     #GENERATING RANDOM NURSES FOR TESTING
     nurses = [Nurse(str(i),8) for i in range(5)]
     for nurse in nurses:
         print(assign(nurse))
+    """
