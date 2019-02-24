@@ -122,20 +122,31 @@ for task in tasks[1:]:
     task_queue.push(task)
 
 nurse = Nurse('Jessica',8)
+#Generate task list
 to_do = []
-for i in range(POOL_SIZE):
+while len(to_do) < POOL_SIZE:
     to_do.append(task_queue.pop())
+#Declare origins
 origins = ""
+#Add locations to origins
 for task in to_do:
     origins = origins + ';' + patient_table['street_address'][int(task[2])].replace(' ',',')
+#Clip initial semicolon
 origins = origins[1:]
+#Make graph matrices
 (adjacency, probability) = get_matrices(origins)
+#Numerically get largest eigenvector for page-rank esque cluster finding
 eig = largest_eigenvector(probability)
+#Start with points and keep track of visited locations
 points_left = list(range(POOL_SIZE))
+#Get most visited point
 current = np.argmax(eig)
+#Initializing "last" point
 last = current
+#Declare tasks array to keep track of what gets done
 tasks = []
-while nurse.get_hours() > 1:
+#Loop until nurse has no time
+while True:
     time = type_time[to_do[current][1]]
     #if nurse has time to do the job, do it
     if nurse.can_work(time):
@@ -156,15 +167,4 @@ while nurse.get_hours() > 1:
     else:
         break
     last = current
-    print(current)
-    print(nurse.get_hours())
 print(tasks)
-
-"""
-print(time)
-print(eig)
-print(np.argmax(eig))
-print(adjacency)
-"""
-#print({i: [j for j, adjacent in enumerate(row) if adjacent] for i, row in enumerate(adjacency)})
-#print(adjacency, probability)
