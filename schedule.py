@@ -79,15 +79,22 @@ class Nurse(tk.Frame):
         vcmdId = master.register(self.validateId) # we have to wrap the command
         self.idEntry = Entry(master, validate="key", validatecommand=(vcmdId, '%P'))
 
+        #back button
+        button1 = tk.Button(self, text="Back",
+                            command=lambda: controller.goBack(self))
+        button1.pack()
+        
         #layout
         # button1.pack()
-        goBack = tk.messagebox.showwarning("Warning", "Are You Sure you Want to go back?", icon="warning")
-        if goBack == "ok":
-            print("hi")
-            controller.show_frame("Manager")
+        
         
         #idLabel.pack()
         #idEntry.pack()
+        def goBack(self):
+            goBack = tk.messagebox.showwarning("Warning", "Are You Sure you Want to go back?", icon="warning")
+            if goBack == "ok":
+                print("hi")
+                controller.show_frame("Manager")
 
         def validateId(self, new_text):
             if not new_text:
