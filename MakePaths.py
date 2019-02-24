@@ -3,7 +3,7 @@ import scipy.linalg as la
 import json
 import urllib.request as ur
 from mat import mat as table
-from queue import queue
+from queue2 import queue
 
 API_INTERFACE = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='
 KEY = 'Aoo6MSOdOhu7_gENweR-26VzV-fP83hR3kCT3EouCWeQdF_uyhsT2kx5ZWqyffI2'
