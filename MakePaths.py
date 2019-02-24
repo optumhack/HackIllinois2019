@@ -6,12 +6,17 @@ from mat import mat as table
 from queue import queue
 class Nurse:
     def __init__(self, name, hours):
-        employee_name = self.name
-        workable_hours = self.hours
-    def check_hours(self):
+        self.employee_name = name
+        self.workable_hours = hours
+
+    def get_hours(self):
         return self.hours
+
+    def get_name(self):
+        return self.employee_name
+
     def work(self, hours):
-        new_hours = self.hours - hours
+        new_hours = self.workable_hours - hours
         if new_hours < 0:
             raise ValueError("Nurse can't work that long")
         self.hours = new_hours
