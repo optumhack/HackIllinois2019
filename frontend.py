@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import *
+from tkinter import messagebox
 
 class Manager:
 
@@ -22,20 +23,10 @@ class Manager:
         self.idEntry = Entry(master, validate="key", validatecommand=(vcmdId, '%P'))
 
         #nurse hours
-<<<<<<< HEAD
         self.nurseLabel = Label(master, text='How Many Hours')
         vcmdHours = master.register(self.validateHours)  # we have to wrap the command
         self.nurseEntry = Entry(master, validate="key", validatecommand=(vcmdHours, '%P'))
-        
-        #history button 
-        self.historyButton = Button(master, text="History", command=lambda: self.history())
-        
-=======
-        #self.nurseLabel = Label(master, text='How Many Hours')
-        #vcmdHours = master.register(self.validateHours)  # we have to wrap the command
-        #self.nurseEntry = Entry(master, validate="key", validatecommand=(vcmdHours, '%P'))
 
->>>>>>> 837365ca332c2c79d6fc7e2fb028278849ff3efe
         #exit button
         self.exitButton = Button(master, text="Exit", command=master.quit)
 
@@ -45,8 +36,14 @@ class Manager:
         #generate button
         self.generateButton = Button(master, text="Generate", command=lambda: self.generate())
 
+        #back button 
+        self.backButton = Button(master, text="Back", command=lambda: self.back())
+
+        #history button 
+        self.historyButton = Button(master, text="History", command=lambda: self.history())
+        
+
         #layout
-<<<<<<< HEAD
         self.idLabel.grid(row=1, column=0)
         self.idEntry.grid(row=1, column=1)
         self.nurseLabel.grid(row=2, column=0)
@@ -54,12 +51,6 @@ class Manager:
         self.exitButton.grid(row=3, column=0)
         self.enterButton.grid(row=3, column=1)
         self.historyButton.grid(row=0, column=0)
-=======
-        self.idLabel.grid(row=0, column=0)
-        self.idEntry.grid(row=0, column=1)
-        self.exitButton.grid(row=2, column=0)
-        self.enterButton.grid(row=2, column=1)
->>>>>>> 837365ca332c2c79d6fc7e2fb028278849ff3efe
 
     def validateId(self, new_text):
         if not new_text:
@@ -101,7 +92,7 @@ class Manager:
 
     def back(self):
         #creates warning messagebox
-        messagebox.showwarning("Warning", "Are You Sure You Want To Go Back?")
+        tkinter.messagebox.showwarning("Warning", "Are You Sure You Want To Go Back?")
 
 class History:
     def __init__(self, master):
