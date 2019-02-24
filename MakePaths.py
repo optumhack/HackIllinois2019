@@ -45,6 +45,16 @@ def get_matrices(origins):
         adjacency_matrix[i][i] = 9999999
     return (adjacency_matrix, probability_matrix)
 
+#Maps high medium and low to 1 2 and 3 for sorting
+def highmedlow(word):
+    if 'HIGH' in word.upper():
+        return 1
+    if "MED" in word.upper():
+        return 2
+    if "LOW" in word.upper():
+        return 3
+    return 0
+
 #Put task type information into usable table object
 f = open('Data Files/CSV/EMPLOYEE_DATA.csv','r')
 lines = f.read().split('\n')
@@ -68,7 +78,16 @@ f = open('Data Files/CSV/TASK_TYPE_DURATION.csv','r')
 lines = f.read().split('\n')
 f.close()
 task_type = table([line.split(',') for line in lines])
-print(np.sort(task_table['due_date'][1:]))
+
+#Sorting by due date over priority
+indicies = np.argsort(list(map(highmedlow,task_table['priority_level'])))
+priority_table = table(np.array(task_table.get_raw())[indicies])
+
+indicies = np.argsort(priority_table['due_date'])
+
+print(np.sort(priority_table['due_date'][1:],kind='mergesort'))
+sorted_tasks = table(priority_table.get_raw()[indicies])
+print(sorted_tasks.get_raw()[:25])
 #(adjacency, probability) = get_matrices(origins)
 
 #print(adjacency, probability)
