@@ -101,14 +101,17 @@ for task in tasks[1:]:
     task_queue.push(task)
 
 to_do = []
-for i in range(20):
+for i in range(4):
     to_do.append(task_queue.pop())
 origins = ""
 for task in to_do:
     origins = origins + ';' + patient_table['street_address'][int(task[2])].replace(' ',',')
 origins = origins[1:]
 (adjacency, probability) = get_matrices(origins)
-print(largest_eigenvector(probability))
+eig = largest_eigenvector(probability)
+print(eig)
+print(np.argmax(eig))
+print(adjacency)
 
-
+print({i: [j for j, adjacent in enumerate(row) if adjacent] for i, row in enumerate(adjacency)})
 #print(adjacency, probability)
