@@ -52,13 +52,13 @@ f.close()
 employee_table = table([line.split(',') for line in lines])
 
 #Put task type information into usable table object
-f = open('Data Files/CSV/PATIENT_DATA.csv','r')
+f = open('Data Files/CSV/NEW_PATIENT_DATA.csv','r')
 lines = f.read().split('\n')
 f.close()
 patient_table = table([line.split(',') for line in lines])
 
 #Put task type information into usable table object
-f = open('Data Files/CSV/TASK_DATA.csv','r')
+f = open('Data Files/CSV/NEW_TASK_DATA.csv','r')
 lines = f.read().split('\n')
 f.close()
 task_table = table([line.split(',') for line in lines])
@@ -68,8 +68,7 @@ f = open('Data Files/CSV/TASK_TYPE_DURATION.csv','r')
 lines = f.read().split('\n')
 f.close()
 task_type = table([line.split(',') for line in lines])
+print(np.sort(task_table['due_date'][1:]))
+#(adjacency, probability) = get_matrices(origins)
 
-
-(adjacency, probability) = get_matrices(origins)
-
-print(adjacency, probability)
+#print(adjacency, probability)
