@@ -200,8 +200,11 @@ def assign(nurse):
                 del to_do[i]
     return nurse
 
-def run(child_conn, nurse):
-    child_conn.send(assign(nurse))
+def run(child_conn, nurses):
+    to_return = []
+    for nurse in nurses:
+        to_return.append(assign(nurse))
+    child_conn.send(to_return)
     child_conn.close()
 
 """
