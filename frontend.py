@@ -1,4 +1,4 @@
-import tkinter as tk
+import tkinter
 from tkinter import *
 
 class Frontend:
@@ -12,7 +12,7 @@ class Frontend:
         # WIDGETS HERE
 
         #nurse id
-        self.idLabel = Label(master, text='Your Nurse ID')
+        self.idLabel = Label(master, text='Nurse ID')
         vcmdId = master.register(self.validateId) # we have to wrap the command
         self.idEntry = Entry(master, validate="key", validatecommand=(vcmdId, '%P'))
 
@@ -54,9 +54,10 @@ class Frontend:
             return False
 
     def run(self):
-        Label(self.master, text = "Hi").pack()
 
-t = Tk()
+        tkinter.Label(self.master, text="Hi").grid(row=3)
+
+t = tkinter.Tk()
 # runs it
 run_frontend = Frontend(t)
 t.mainloop()
