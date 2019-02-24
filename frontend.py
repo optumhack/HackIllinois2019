@@ -25,7 +25,10 @@ class Manager:
         self.nurseLabel = Label(master, text='How Many Hours')
         vcmdHours = master.register(self.validateHours)  # we have to wrap the command
         self.nurseEntry = Entry(master, validate="key", validatecommand=(vcmdHours, '%P'))
-
+        
+        #history button 
+        self.historyButton = Button(master, text="History", command=lambda: self.history())
+        
         #exit button
         self.exitButton = Button(master, text="Exit", command=master.quit)
 
@@ -36,12 +39,13 @@ class Manager:
         self.generateButton = Button(master, text="Generate", command=lambda: self.generate())
 
         #layout
-        self.idLabel.grid(row=0, column=0)
-        self.idEntry.grid(row=0, column=1)
-        self.nurseLabel.grid(row=1, column=0)
-        self.nurseEntry.grid(row=1, column=1)
-        self.exitButton.grid(row=2, column=0)
-        self.enterButton.grid(row=2, column=1)
+        self.idLabel.grid(row=1, column=0)
+        self.idEntry.grid(row=1, column=1)
+        self.nurseLabel.grid(row=2, column=0)
+        self.nurseEntry.grid(row=2, column=1)
+        self.exitButton.grid(row=3, column=0)
+        self.enterButton.grid(row=3, column=1)
+        self.historyButton.grid(row=0, column=0)
 
     def validateId(self, new_text):
         if not new_text:
@@ -70,6 +74,16 @@ class Manager:
         i = {id, hours}
         self.nurseHourList.append(i)
         tkinter.Label(self.master, text="Hello World").grid(row=3)
+    
+    #page1=Tk()
+    #Label1=Label(page1, text="Manager")
+    #label1.pack()
+
+    #def topage2():
+        #page2=Tk()
+        #label2=Label(page2, text="History")
+        #label2.pack()
+
 
 class History:
     def __init__(self, master):
