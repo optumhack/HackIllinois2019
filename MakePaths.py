@@ -21,15 +21,6 @@ class Nurse:
             raise ValueError("Nurse can't work that long")
         self.hours = new_hours
 
-class Nurse:
-    def __init__(self, name, hours):
-        employee_name = self.name
-        workable_hours = self.hours
-    def check_hours(self):
-        return self.hours
-    def work(self):
-        return 
-
 API_INTERFACE = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='
 KEY = 'Aoo6MSOdOhu7_gENweR-26VzV-fP83hR3kCT3EouCWeQdF_uyhsT2kx5ZWqyffI2'
 def largest_eigenvector(probability_matrix):
