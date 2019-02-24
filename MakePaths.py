@@ -87,11 +87,13 @@ def highmedlow(word):
     return 0
 
 def main():
+    """
     #Put task type information into usable table object
     f = open('Data Files/CSV/EMPLOYEE_DATA.csv','r')
     lines = f.read().split('\n')
     f.close()
     employee_table = table([line.split(',') for line in lines])
+    """
 
     #Put task type information into usable table object
     f = open('Data Files/CSV/NEW_PATIENT_DATA.csv','r')
