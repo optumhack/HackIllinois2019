@@ -23,9 +23,9 @@ class Manager:
         self.idEntry = Entry(master, validate="key", validatecommand=(vcmdId, '%P'))
 
         #nurse hours
-        #self.nurseLabel = Label(master, text='How Many Hours')
-        #vcmdHours = master.register(self.validateHours)  # we have to wrap the command
-        #self.nurseEntry = Entry(master, validate="key", validatecommand=(vcmdHours, '%P'))
+        self.nurseLabel = Label(master, text='How Many Hours')
+        vcmdHours = master.register(self.validateHours)  # we have to wrap the command
+        self.nurseEntry = Entry(master, validate="key", validatecommand=(vcmdHours, '%P'))
 
         #exit button
         self.exitButton = Button(master, text="Exit", command=master.quit)
@@ -39,12 +39,18 @@ class Manager:
         #back button 
         self.backButton = Button(master, text="Back", command=lambda: self.back())
 
+        #history button 
+        self.historyButton = Button(master, text="History", command=lambda: self.history())
+        
+
         #layout
-        self.idLabel.grid(row=0, column=0)
-        self.idEntry.grid(row=0, column=1)
-        self.exitButton.grid(row=2, column=0)
-        self.enterButton.grid(row=2, column=2)
-        self.backButton.grid(row=2, column=1)
+        self.idLabel.grid(row=1, column=0)
+        self.idEntry.grid(row=1, column=1)
+        self.nurseLabel.grid(row=2, column=0)
+        self.nurseEntry.grid(row=2, column=1)
+        self.exitButton.grid(row=3, column=0)
+        self.enterButton.grid(row=3, column=1)
+        self.historyButton.grid(row=0, column=0)
 
     def validateId(self, new_text):
         if not new_text:
@@ -73,6 +79,16 @@ class Manager:
         i = {id}
         self.nurseHourList.append(i)
         tkinter.Label(self.master, text="Hello World").grid(row=3)
+    
+    #page1=Tk()
+    #Label1=Label(page1, text="Manager")
+    #label1.pack()
+
+    #def topage2():
+        #page2=Tk()
+        #label2=Label(page2, text="History")
+        #label2.pack()
+
 
     def back(self):
         #creates warning messagebox
