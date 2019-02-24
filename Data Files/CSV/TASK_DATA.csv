@@ -1,4 +1,4 @@
-task_id,task_type,patient_id,employee_id,due_date,prioirty_level
+task_id,task_type,patient_id,employee_id,due_date,priority_level
 1,Task Type 1,482,77,3/13/2018,Medium
 2,Task Type 3,489,90,3/13/2018,High
 3,Task Type 2,485,19,3/13/2018,High
