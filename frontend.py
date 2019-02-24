@@ -35,6 +35,7 @@ class Manager:
         #generate button
         self.generateButton = Button(master, text="Generate", command=lambda: self.generate())
 
+<<<<<<< HEAD
         #layout
         self.idLabel.grid(row=0, column=0)
         self.idEntry.grid(row=0, column=1)
@@ -42,6 +43,23 @@ class Manager:
         self.nurseEntry.grid(row=1, column=1)
         self.exitButton.grid(row=2, column=0)
         self.enterButton.grid(row=2, column=1)
+=======
+        #back button 
+        self.backButton = Button(master, text="Back", command=lambda: self.back())
+
+        #history button 
+        self.historyButton = Button(master, text="History", command=lambda: self.history())
+        
+
+        #layout
+        self.idLabel.grid(row=1, column=0)
+        self.idEntry.grid(row=1, column=1)
+        self.nurseLabel.grid(row=2, column=0)
+        self.nurseEntry.grid(row=2, column=1)
+        self.exitButton.grid(row=3, column=0)
+        self.enterButton.grid(row=3, column=1)
+        self.historyButton.grid(row=0, column=0)
+>>>>>>> eb2f75ddcf8fe52ce1ec40a5651c889a25a0ce44
 
     def validateId(self, new_text):
         if not new_text:
@@ -70,6 +88,16 @@ class Manager:
         i = {id, hours}
         self.nurseHourList.append(i)
         tkinter.Label(self.master, text="Hello World").grid(row=3)
+    
+    #page1=Tk()
+    #Label1=Label(page1, text="Manager")
+    #label1.pack()
+
+    #def topage2():
+        #page2=Tk()
+        #label2=Label(page2, text="History")
+        #label2.pack()
+
 
 class History:
     def __init__(self, master):
