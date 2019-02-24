@@ -9,7 +9,7 @@ base_area = (45.5347,-122.6231)
 for line in lines[1:]:
     try:
         linelist = line.split(',')
-        linelist[3] = str(base_area[0] + np.random.randn()/5) + ',' + str(base_area[1] + np.random.randn()/5)
+        linelist[3] = str(base_area[0] + np.random.randn()/5) + ' ' + str(base_area[1] + np.random.randn()/5)
         newlines.append(','.join(linelist))
     except:
         pass

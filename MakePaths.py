@@ -3,13 +3,14 @@ import scipy.linalg as la
 import json
 import urllib.request as ur
 from mat import mat as table
+from queue import queue
 
 API_INTERFACE = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='
 KEY = 'Aoo6MSOdOhu7_gENweR-26VzV-fP83hR3kCT3EouCWeQdF_uyhsT2kx5ZWqyffI2'
 def largest_eigenvector(probability_matrix):
     #Start with random vector and get largest eigenvector out of probability
-    vec = np.array([1,1,1,1,1])
-    for i in range(10):
+    vec = np.zeros(len(probability_matrix)) + 1
+    for i in range(5):
         vec = probability_matrix@vec
         vec = vec/(la.norm(vec))
     return vec
@@ -85,7 +86,20 @@ priority_table = table(np.array(task_table.get_raw())[indicies])
 indicies = np.argsort(priority_table['due_date'],kind='mergesort')
 data = np.vstack((priority_table.get_raw()[indicies][-1],priority_table.get_raw()[indicies][:-1]))
 sorted_tasks = table(data)
+tasks = data[1:]
+task_queue = queue(tasks[0])
+for task in tasks[1:]:
+    task_queue.push(task)
 
-#(adjacency, probability) = get_matrices(origins)
+to_do = []
+for i in range(20):
+    to_do.append(task_queue.pop())
+origins = ""
+for task in to_do:
+    origins = origins + ';' + patient_table['street_address'][int(task[2])].replace(' ',',')
+origins = origins[1:]
+(adjacency, probability) = get_matrices(origins)
+print(largest_eigenvector(probability))
+
 
 #print(adjacency, probability)
