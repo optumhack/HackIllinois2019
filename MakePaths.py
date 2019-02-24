@@ -125,7 +125,6 @@ def main():
     priority_table = table(np.array(task_table.get_raw())[indicies])
     indicies = np.argsort(priority_table['due_date'],kind='mergesort')
     data = np.vstack((priority_table.get_raw()[indicies][-1],priority_table.get_raw()[indicies][:-1]))
-    sorted_tasks = table(data)
     tasks = data[1:]
     task_queue = queue(tasks[0])
     for task in tasks[1:]:
