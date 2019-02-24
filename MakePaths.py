@@ -87,11 +87,13 @@ def highmedlow(word):
     return 0
 
 def main():
+    """
     #Put task type information into usable table object
     f = open('Data Files/CSV/EMPLOYEE_DATA.csv','r')
     lines = f.read().split('\n')
     f.close()
     employee_table = table([line.split(',') for line in lines])
+    """
 
     #Put task type information into usable table object
     f = open('Data Files/CSV/NEW_PATIENT_DATA.csv','r')
@@ -109,7 +111,7 @@ def main():
     f = open('Data Files/CSV/TASK_TYPE_DURATION.csv','r')
     lines = f.read().split('\n')
     f.close()
-    task_type = table([line.split(',') for line in lines])
+    #task_type = table([line.split(',') for line in lines])
     type_time = {}
     for line in lines[1:]:
         try:
@@ -123,7 +125,6 @@ def main():
     priority_table = table(np.array(task_table.get_raw())[indicies])
     indicies = np.argsort(priority_table['due_date'],kind='mergesort')
     data = np.vstack((priority_table.get_raw()[indicies][-1],priority_table.get_raw()[indicies][:-1]))
-    sorted_tasks = table(data)
     tasks = data[1:]
     task_queue = queue(tasks[0])
     for task in tasks[1:]:
