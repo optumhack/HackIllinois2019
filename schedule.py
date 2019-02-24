@@ -31,7 +31,12 @@ class Schedule(tk.Tk):
     def show_frame(self, page_name):
         frame = self.frames[page_name]
         frame.tkraise()
-
+    
+    def goBack(self):
+        goBack = tk.messagebox.showwarning("Warning", "Are You Sure you Want to go back?", icon="warning")
+        if goBack == "ok":
+            print("hi")
+            self.show_frame("Manager")
 
 class Manager(tk.Frame):
 
@@ -81,7 +86,7 @@ class Nurse(tk.Frame):
 
         #back button
         button1 = tk.Button(self, text="Back",
-                            command=lambda: controller.goBack(self))
+                            command=lambda: controller.goBack())
         button1.pack()
         
         #layout
@@ -90,11 +95,11 @@ class Nurse(tk.Frame):
         
         #idLabel.pack()
         #idEntry.pack()
-        def goBack(self):
-            goBack = tk.messagebox.showwarning("Warning", "Are You Sure you Want to go back?", icon="warning")
-            if goBack == "ok":
-                print("hi")
-                controller.show_frame("Manager")
+        #def goBack(self):
+        #    goBack = tk.messagebox.showwarning("Warning", "Are You Sure you Want to go back?", icon="warning")
+        #    if goBack == "ok":
+        #        print("hi")
+        #        controller.show_frame("Manager")
 
         def validateId(self, new_text):
             if not new_text:
