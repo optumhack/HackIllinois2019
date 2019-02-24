@@ -7,7 +7,7 @@ from queue import queue
 
 API_INTERFACE = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='
 KEY = 'Aoo6MSOdOhu7_gENweR-26VzV-fP83hR3kCT3EouCWeQdF_uyhsT2kx5ZWqyffI2'
-POOL_SIZE = 8
+POOL_SIZE = 5
 class Nurse:
     def __init__(self, name, hours):
         self.employee_name = name
@@ -120,51 +120,68 @@ tasks = data[1:]
 task_queue = queue(tasks[0])
 for task in tasks[1:]:
     task_queue.push(task)
-
-nurse = Nurse('Jessica',8)
+"""
+START OF PROCESSING
+"""
 #Generate task list
 to_do = []
-while len(to_do) < POOL_SIZE:
-    to_do.append(task_queue.pop())
-#Declare origins
-origins = ""
-#Add locations to origins
-for task in to_do:
-    origins = origins + ';' + patient_table['street_address'][int(task[2])].replace(' ',',')
-#Clip initial semicolon
-origins = origins[1:]
-#Make graph matrices
-(adjacency, probability) = get_matrices(origins)
-#Numerically get largest eigenvector for page-rank esque cluster finding
-eig = largest_eigenvector(probability)
-#Start with points and keep track of visited locations
-points_left = list(range(POOL_SIZE))
-#Get most visited point
-current = np.argmax(eig)
-#Initializing "last" point
-last = current
-#Declare tasks array to keep track of what gets done
-tasks = []
-#Loop until nurse has no time
-while True:
-    time = type_time[to_do[current][1]]
-    #if nurse has time to do the job, do it
-    if nurse.can_work(time):
-        nurse.work(time)
-    else:
-        break
-    #remove node
-    points_left.remove(current)
-    #add to completed tasks
-    tasks.append(to_do[current][0])
-    #get minimium remaining value in adjacency matrix
-    minval = min(adjacency[current][points_left])
-    current = np.where(adjacency[current] == minval)[0][0]
-    #Give extra time driving so divide minutes by 45 instead of 60
-    time = adjacency[current][last]/45
-    if nurse.can_work(time):
-        nurse.work(time)
-    else:
-        break
+nurses = [Nurse(str(i),8) for i in range(5)]
+for nurse in nurses:
+    new_entries = 0
+    while len(to_do) < POOL_SIZE:
+        to_do.append(task_queue.pop())
+        new_entries += 1
+    #Declare origins
+    origins = ""
+    #Add locations to origins
+    for task in to_do:
+        origins = origins + ';' + patient_table['street_address'][int(task[2])].replace(' ',',')
+    #Clip initial semicolon
+    origins = origins[1:]
+    #Make graph matrices
+    (adjacency, probability) = get_matrices(origins)
+    pseudo_adjacency = adjacency.copy()
+    pseudo_probability = probability.copy()
+    #Apply factor to prioritize older units in task list 1.15 to ~double chances every 5 nurses
+    for i in range(POOL_SIZE - new_entries):
+        pseudo_adjacency[i,:] /= 1.15
+        pseudo_adjacency[:,i] /= 1.15
+        pseudo_probability[i,:] *= 1.15
+        pseudo_probability[:,i] *= 1.15
+
+    #Numerically get largest eigenvector for page-rank esque cluster finding
+    eig = largest_eigenvector(pseudo_probability)
+    #Start with points and keep track of visited locations
+    points_left = list(range(POOL_SIZE))
+    #Get most visited point
+    current = np.argmax(eig)
+    #Initializing "last" point
     last = current
-print(tasks)
+    #Declare tasks array to keep track of what gets done
+    tasks = []
+    #Loop until nurse has no time
+    while True:
+        time = type_time[to_do[current][1]]
+        #if nurse has time to do the job, do it
+        if nurse.can_work(time):
+            nurse.work(time)
+        else:
+            break
+        #remove node
+        points_left.remove(current)
+        #add to completed tasks
+        tasks.append(to_do[current][0])
+        #get minimium remaining value in adjacency matrix
+        minval = min(pseudo_adjacency[current][points_left])
+        current = np.where(pseudo_adjacency[current] == minval)[0][0]
+        #Give extra time driving so divide minutes by 45 instead of 60
+        time = adjacency[current][last]/45
+        if nurse.can_work(time):
+            nurse.work(time)
+        else:
+            break
+        last = current
+    for task_number in tasks:
+        for i in range(len(to_do)-1,-1,-1):
+            if task_number == to_do[i][0]:
+                del to_do[i]
