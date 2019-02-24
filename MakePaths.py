@@ -82,12 +82,10 @@ task_type = table([line.split(',') for line in lines])
 #Sorting by due date over priority
 indicies = np.argsort(list(map(highmedlow,task_table['priority_level'])))
 priority_table = table(np.array(task_table.get_raw())[indicies])
+indicies = np.argsort(priority_table['due_date'],kind='mergesort')
+data = np.vstack((priority_table.get_raw()[indicies][-1],priority_table.get_raw()[indicies][:-1]))
+sorted_tasks = table(data)
 
-indicies = np.argsort(priority_table['due_date'])
-
-print(np.sort(priority_table['due_date'][1:],kind='mergesort'))
-sorted_tasks = table(priority_table.get_raw()[indicies])
-print(sorted_tasks.get_raw()[:25])
 #(adjacency, probability) = get_matrices(origins)
 
 #print(adjacency, probability)
