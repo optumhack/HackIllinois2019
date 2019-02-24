@@ -37,6 +37,9 @@ class Nurse:
     def set_tasks(self, task_list):
         self.tasks = task_list
 
+    def get_tasks(self):
+        return self.tasks
+
     def __str__(self):
         return self.employee_name + ': [TASKS] ' + ', '.join(self.tasks)
 
@@ -227,7 +230,7 @@ def makeform(root, fields):
    
 
 if __name__ == "__main__":
-
+    
     while True:
         root = Tk()
         ents = makeform(root, ['Number of nurses'])
@@ -265,9 +268,3 @@ if __name__ == "__main__":
     f.write('NURSE: [TASK] TASK_IDs\n')
     f.write('\n'.join(nurse_data))
     f.close()
-    """
-    #GENERATING RANDOM NURSES FOR TESTING
-    nurses = [Nurse(str(i),8) for i in range(5)]
-    for nurse in nurses:
-        print(assign(nurse))
-    """
