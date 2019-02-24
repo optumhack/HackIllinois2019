@@ -4,6 +4,17 @@ import json
 import urllib.request as ur
 from mat import mat as table
 from queue import queue
+class Nurse:
+    def __init__(self, name, hours):
+        employee_name = self.name
+        workable_hours = self.hours
+    def check_hours(self):
+        return self.hours
+    def work(self, hours):
+        new_hours = self.hours - hours
+        if new_hours < 0:
+            raise ValueError("Nurse can't work that long")
+        self.hours = new_hours
 
 API_INTERFACE = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='
 KEY = 'Aoo6MSOdOhu7_gENweR-26VzV-fP83hR3kCT3EouCWeQdF_uyhsT2kx5ZWqyffI2'
@@ -74,11 +85,15 @@ lines = f.read().split('\n')
 f.close()
 task_table = table([line.split(',') for line in lines])
 
-#Put task type information into usable table object
-f = open('Data Files/CSV/TASK_TYPE_DURATION.csv','r')
-lines = f.read().split('\n')
-f.close()
+#Put task type information into usable dictionary
 task_type = table([line.split(',') for line in lines])
+type_time = {}
+for line in lines[1:]:
+    try:
+        tokens = line.split(',')
+        type_time[tokens[0]] = int(tokens[1])
+    except:
+        pass
 
 #Sorting by due date over priority
 indicies = np.argsort(list(map(highmedlow,task_table['priority_level'])))
@@ -91,6 +106,7 @@ task_queue = queue(tasks[0])
 for task in tasks[1:]:
     task_queue.push(task)
 
+
 to_do = []
 for i in range(4):
     to_do.append(task_queue.pop())
@@ -100,9 +116,12 @@ for task in to_do:
 origins = origins[1:]
 (adjacency, probability) = get_matrices(origins)
 eig = largest_eigenvector(probability)
+start = np.argmax(eig)
+time = type_time[to_do[start][1]]
+print()
 print(eig)
 print(np.argmax(eig))
 print(adjacency)
 
-print({i: [j for j, adjacent in enumerate(row) if adjacent] for i, row in enumerate(adjacency)})
+#print({i: [j for j, adjacent in enumerate(row) if adjacent] for i, row in enumerate(adjacency)})
 #print(adjacency, probability)
