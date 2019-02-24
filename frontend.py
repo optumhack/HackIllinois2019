@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import *
+from tkinter import messagebox
 
 class Manager:
 
@@ -35,11 +36,15 @@ class Manager:
         #generate button
         self.generateButton = Button(master, text="Generate", command=lambda: self.generate())
 
+        #back button 
+        self.backButton = Button(master, text="Back", command=lambda: self.back())
+
         #layout
         self.idLabel.grid(row=0, column=0)
         self.idEntry.grid(row=0, column=1)
         self.exitButton.grid(row=2, column=0)
-        self.enterButton.grid(row=2, column=1)
+        self.enterButton.grid(row=2, column=2)
+        self.backButton.grid(row=2, column=1)
 
     def validateId(self, new_text):
         if not new_text:
@@ -71,7 +76,7 @@ class Manager:
 
     def back(self):
         #creates warning messagebox
-        messagebox.showwarning("Warning", "Are You Sure You Want To Go Back?")
+        tkinter.messagebox.showwarning("Warning", "Are You Sure You Want To Go Back?")
 
 class History:
     def __init__(self, master):
