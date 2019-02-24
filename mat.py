@@ -8,6 +8,7 @@ class mat:
                 del data[i]
         self.data = data
 
+    #returns a column using the key which names the column name
     def __getitem__(self, key):
         found = False
         index = None
@@ -19,7 +20,8 @@ class mat:
         if found == False:
             raise KeyError('Key not found')
         return np.array([row[index] for row in self.data])
-    
+
+    #returns the raw data
     def get_raw(self):
         return self.data
 
