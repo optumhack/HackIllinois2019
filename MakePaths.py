@@ -7,11 +7,12 @@ from queue import queue
 
 API_INTERFACE = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='
 KEY = 'Aoo6MSOdOhu7_gENweR-26VzV-fP83hR3kCT3EouCWeQdF_uyhsT2kx5ZWqyffI2'
-POOL_SIZE = 5
+POOL_SIZE = 20
 class Nurse:
     def __init__(self, name, hours):
-        self.employee_name = name
-        self.workable_hours = hours
+        self.employee_name = str(name)
+        self.workable_hours = float(hours)
+        self.tasks = []
 
     def get_hours(self):
         return self.workable_hours
@@ -29,6 +30,12 @@ class Nurse:
         if new_hours < 0:
             raise ValueError("Nurse can't work that long")
         self.workable_hours = new_hours
+
+    def set_tasks(self, task_list):
+        self.tasks = task_list
+
+    def __str__(self):
+        return self.employee_name + ': [TASKS] ' + ', '.join(self.tasks)
 
 def largest_eigenvector(probability_matrix):
     #Start with random vector and get largest eigenvector out of probability
@@ -125,7 +132,10 @@ START OF PROCESSING
 """
 #Generate task list
 to_do = []
+
+#GENERATING RANDOM NURSES FOR TESTING
 nurses = [Nurse(str(i),8) for i in range(5)]
+
 for nurse in nurses:
     new_entries = 0
     while len(to_do) < POOL_SIZE:
@@ -181,7 +191,11 @@ for nurse in nurses:
         else:
             break
         last = current
+    nurse.set_tasks(tasks)
     for task_number in tasks:
         for i in range(len(to_do)-1,-1,-1):
             if task_number == to_do[i][0]:
                 del to_do[i]
+
+for nurse in nurses:
+    print(nurse)
