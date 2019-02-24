@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import *
+from tkinter import messagebox
 
 LARGE_FONT = ("Verdana", 12)
 
@@ -18,55 +19,63 @@ class Schedule(tk.Tk):
         self.frames = {}
 
         for F in (Manager, History, Nurse):
-            frame = F(container, self)
+            page_name = F.__name__
+            frame = F(master=container, controller=self)
 
-            self.frames[F] = frame
+            self.frames[page_name] = frame
 
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame(Manager)
+        self.show_frame("Manager")
 
-    def show_frame(self, cont):
-        frame = self.frames[cont]
+    def show_frame(self, page_name):
+        frame = self.frames[page_name]
         frame.tkraise()
-
+    
+    def goBack(self):
+        goBack = tk.messagebox.showwarning("Warning", "Are You Sure you Want to go back?", icon="warning")
+        if goBack == "ok":
+            print("hi")
+            self.show_frame("Manager")
 
 class Manager(tk.Frame):
 
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Start Page", font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
+    def __init__(self, master, controller):
+        tk.Frame.__init__(self, master)
+        self.controller = controller
+        label = tk.Label(self, text="Manager", font=LARGE_FONT)
+        label.pack(side="top", fill="x", pady=10)
 
-        button = tk.Button(self, text="Visit Page 1",
-                           command=lambda: controller.show_frame(History))
-        button.pack()
-
-        button2 = tk.Button(self, text="Visit Page 2",
-                            command=lambda: controller.show_frame(Nurse))
+        button2 = tk.Button(self, text="Go To Nurse",
+                            command=lambda: controller.show_frame("Nurse"))
+        
+        button3 = tk.Button(self, text="Go To History",
+                            command=lambda: controller.show_frame("History"))
+        
         button2.pack()
-
+        button3.pack()
 
 class History(tk.Frame):
 
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+    def __init__(self, master, controller):
+        tk.Frame.__init__(self, master)
+        self.controller = controller
         label = tk.Label(self, text="History", font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
-
+        label.pack(side="top", fill="x", pady=10)
 
         button1 = tk.Button(self, text="Back",
-                            command=lambda: controller.show_frame(Manager))
+                            command=lambda: controller.show_frame("Manager"))
         button1.pack()
 
 
 
 class Nurse(tk.Frame):
 
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+    def __init__(self, master, controller):
+        tk.Frame.__init__(self, master)
+        self.controller = controller
         label = tk.Label(self, text="For the Nurse", font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
+        label.pack(side="top", fill="x", pady=10)
         self.master = master
         self.validateId = 0
 
@@ -75,19 +84,22 @@ class Nurse(tk.Frame):
         vcmdId = master.register(self.validateId) # we have to wrap the command
         self.idEntry = Entry(master, validate="key", validatecommand=(vcmdId, '%P'))
 
-        # button1 = tk.Button(self, text="Back",
-        #                     command=lambda: controller.show_frame(Manager))
-
+        #back button
+        button1 = tk.Button(self, text="Back",
+                            command=lambda: controller.goBack())
+        button1.pack()
+        
         #layout
         # button1.pack()
-        goBack = tkinter.messagebox.showwarning("Warning", "Are You Sure you Want to go back?", icon="warning")
-        if goBack == "ok":
-            print("hi")
-            frame = self.frame(Manager)
-            frame.tkraise
         
-        idLabel.pack()
-        idEntry.pack()
+        
+        #idLabel.pack()
+        #idEntry.pack()
+        #def goBack(self):
+        #    goBack = tk.messagebox.showwarning("Warning", "Are You Sure you Want to go back?", icon="warning")
+        #    if goBack == "ok":
+        #        print("hi")
+        #        controller.show_frame("Manager")
 
         def validateId(self, new_text):
             if not new_text:
