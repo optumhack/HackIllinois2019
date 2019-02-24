@@ -1,13 +1,18 @@
 import tkinter
 from tkinter import *
 
-class Frontend:
+class Manager:
 
     def __init__(self, master):
+
         self.master = master
-        master.title("Check schedule")
+        master.title("Manager")
         self.id = 0
         self.hours = 0
+
+        #making nurse hour list
+        nurseHourList = []
+        self.nurseHourList = nurseHourList
 
         # WIDGETS HERE
 
@@ -21,15 +26,22 @@ class Frontend:
         vcmdHours = master.register(self.validateHours)  # we have to wrap the command
         self.nurseEntry = Entry(master, validate="key", validatecommand=(vcmdHours, '%P'))
 
+        #exit button
+        self.exitButton = Button(master, text="Exit", command=master.quit)
+
         #enter button
-        self.button = Button(master, text="Enter", command=lambda: self.run())
+        self.enterButton = Button(master, text="Enter", command=lambda: self.enter())
+
+        #generate button
+        self.generateButton = Button(master, text="Generate", command=lambda: self.generate())
 
         #layout
         self.idLabel.grid(row=0, column=0)
         self.idEntry.grid(row=0, column=1)
         self.nurseLabel.grid(row=1, column=0)
         self.nurseEntry.grid(row=1, column=1)
-        self.button.grid(row=2, column=1)
+        self.exitButton.grid(row=2, column=0)
+        self.enterButton.grid(row=2, column=1)
 
     def validateId(self, new_text):
         if not new_text:
@@ -53,11 +65,23 @@ class Frontend:
         except ValueError:
             return False
 
-    def run(self):
+    def enter(self):
+        #adds id/hours to nursehourlist
+        i = {id, hours}
+        self.nurseHourList.append(i)
+        tkinter.Label(self.master, text="Hello World").grid(row=3)
 
-        tkinter.Label(self.master, text="Hi").grid(row=3)
+class History:
+    def __init__(self, master):
+        self.master = master
+        master.title = "Past"
 
-t = tkinter.Tk()
+class Nurse:
+    def __init__(self, master):
+        self.master = master
+        master.title = "Nurse"
+
+t = Tk()
 # runs it
-run_frontend = Frontend(t)
+run_frontend = Manager(t)
 t.mainloop()
