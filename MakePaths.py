@@ -4,25 +4,32 @@ import json
 import urllib.request as ur
 from mat import mat as table
 from queue import queue
+
+API_INTERFACE = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='
+KEY = 'Aoo6MSOdOhu7_gENweR-26VzV-fP83hR3kCT3EouCWeQdF_uyhsT2kx5ZWqyffI2'
+POOL_SIZE = 8
 class Nurse:
     def __init__(self, name, hours):
         self.employee_name = name
         self.workable_hours = hours
 
     def get_hours(self):
-        return self.hours
+        return self.workable_hours
 
     def get_name(self):
         return self.employee_name
+
+    def can_work(self, hours):
+        if hours <= self.workable_hours:
+            return True
+        return False
 
     def work(self, hours):
         new_hours = self.workable_hours - hours
         if new_hours < 0:
             raise ValueError("Nurse can't work that long")
-        self.hours = new_hours
+        self.workable_hours = new_hours
 
-API_INTERFACE = 'https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins='
-KEY = 'Aoo6MSOdOhu7_gENweR-26VzV-fP83hR3kCT3EouCWeQdF_uyhsT2kx5ZWqyffI2'
 def largest_eigenvector(probability_matrix):
     #Start with random vector and get largest eigenvector out of probability
     vec = np.zeros(len(probability_matrix)) + 1
@@ -91,6 +98,9 @@ f.close()
 task_table = table([line.split(',') for line in lines])
 
 #Put task type information into usable dictionary
+f = open('Data Files/CSV/TASK_TYPE_DURATION.csv','r')
+lines = f.read().split('\n')
+f.close()
 task_type = table([line.split(',') for line in lines])
 type_time = {}
 for line in lines[1:]:
@@ -111,9 +121,9 @@ task_queue = queue(tasks[0])
 for task in tasks[1:]:
     task_queue.push(task)
 
-
+nurse = Nurse('Jessica',8)
 to_do = []
-for i in range(4):
+for i in range(POOL_SIZE):
     to_do.append(task_queue.pop())
 origins = ""
 for task in to_do:
@@ -121,12 +131,40 @@ for task in to_do:
 origins = origins[1:]
 (adjacency, probability) = get_matrices(origins)
 eig = largest_eigenvector(probability)
-start = np.argmax(eig)
-time = type_time[to_do[start][1]]
-print()
+points_left = list(range(POOL_SIZE))
+current = np.argmax(eig)
+last = current
+tasks = []
+while nurse.get_hours() > 1:
+    time = type_time[to_do[current][1]]
+    #if nurse has time to do the job, do it
+    if nurse.can_work(time):
+        nurse.work(time)
+    else:
+        break
+    #remove node
+    points_left.remove(current)
+    #add to completed tasks
+    tasks.append(to_do[current][0])
+    #get minimium remaining value in adjacency matrix
+    minval = min(adjacency[current][points_left])
+    current = np.where(adjacency[current] == minval)[0][0]
+    #Give extra time driving so divide minutes by 45 instead of 60
+    time = adjacency[current][last]/45
+    if nurse.can_work(time):
+        nurse.work(time)
+    else:
+        break
+    last = current
+    print(current)
+    print(nurse.get_hours())
+print(tasks)
+
+"""
+print(time)
 print(eig)
 print(np.argmax(eig))
 print(adjacency)
-
+"""
 #print({i: [j for j, adjacent in enumerate(row) if adjacent] for i, row in enumerate(adjacency)})
 #print(adjacency, probability)
